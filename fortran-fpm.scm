@@ -10,16 +10,16 @@
 (define-public fortran-fpm
   (package
    (name "fortran-fpm")
-   (version "0.10.1")
+   (version "0.12.0")
    (source
     (origin
      (method git-fetch)
      (uri (git-reference
            (url "https://github.com/fortran-lang/fpm.git")
-           (commit version)))
+           (commit (string-append "v" version))))
      (sha256
       (base32
-       "1sh6mn1ajnyf1a5flcf8fpixn5al2spqpaxgw9g1yp4p36mfd8wz"))))
+       "1lvmf8w3wfqyvv1r4jsslq58j2b35gfffyz605vfsapkcr8jzwc0"))))
    (build-system copy-build-system)
    (arguments
     (list
