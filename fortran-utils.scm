@@ -1,11 +1,13 @@
-(define-module (fortran-fpm)
+(define-module (fortran-utils)
   #:use-module (guix packages)
   #:use-module (guix git-download)
   #:use-module (guix build-system copy)
   #:use-module (guix licenses)
   #:use-module (guix gexp)
   #:use-module (guix download)
-  #:use-module (gnu packages gcc))
+  #:use-module (guix profiles)
+  #:use-module (guix-hpc packages toolchains))
+
 
 (define-public fortran-fpm
   (package
@@ -82,14 +84,14 @@
      )
     )
    (inputs
-    `(("gfortran-toolchain" ,gfortran)
+    `(("gfortran-toolchain" ,gfortran-toolchain-14)
       ("bootstrap"
        ,(origin
 	 (method url-fetch)
-	 (uri "https://github.com/fortran-lang/fpm/releases/download/v0.10.1/fpm-0.10.1.F90")
+	 (uri "https://github.com/fortran-lang/fpm/releases/download/v0.12.0/fpm-0.12.0.F90")
 	 (sha256
 	  (base32
-	   "1jp1hh5yjz3ghk5f1ixz06x6jl8mhh3hm89vla4yi9y2c1dx0lvm"))
+	   "1ba627954qzw8kbkafqrdvripf9l1mq17nqzr67qzsnq2347lmk1"))
 	 (file-name "fpm.F90")))
       ;; ("git" ,git)
       ("toml-f"
@@ -149,5 +151,3 @@ you will feel at home with fpm.
 Fpm's long term vision is to nurture and grow the ecosystem of modern Fortran applications and libraries.")
    (home-page "https://fpm.fortran-lang.org")
    (license expat)))
-
-fortran-fpm
